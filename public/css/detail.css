@@ -1,0 +1,51 @@
+.product {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 25px;
+    width: 100%;
+    text-align: center;
+    font-size: small;
+    margin-top: 5%;
+}
+
+.product > img {
+    width: 200px;
+}
+
+.filter-section {
+    border-bottom: 1px #ddd solid;
+}
+
+#filter-dropdown:hover > .sub-filter {
+    display: flex;
+}
+
+.size-section > span {
+    border: 1px #ddd solid;
+    padding: 25%;
+}
+
+#arrow {
+    width: 10px;
+    height: 10px;
+}
+
+.sub-filter {
+    background-color: white;
+    box-shadow: 0 2px 2px 2px #f2f2f2;
+    width: 15%;
+    height: 25%;
+    flex-direction: column;
+    padding: 2% 0 0 2%;
+    flex-wrap: wrap;
+    position: absolute;
+    display: none;
+    z-index: 1;
+    color: black;
+}
+
+.footer {
+    color: white;
+    background-color: black;
+    text-align: center;
+    position: relative;
+}

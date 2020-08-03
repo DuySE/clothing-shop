@@ -1,0 +1,44 @@
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.name, .price, .slogan {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.name, .price {
+    font-size: small;
+}
+
+.slogan {
+    font-size: larger;
+}
+
+.menu > a:visited {
+    color: white;
+}
+
+.product {
+    margin: 0 10px 10px 10px;
+}
+
+.product > img {
+    width: 100%;
+}
+
+.product > p {
+    text-align: center;
+}
+
+.section-name {
+    font-size: xx-large;
+}
+
+.footer {
+    color: white;
+    background-color: black;
+    text-align: center;
+}
