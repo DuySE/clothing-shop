@@ -26,7 +26,7 @@
     flex: 1 1 auto;
 }
 
-#arrow {
+.arrow {
     width: 10px;
     height: 10px;
 }
@@ -71,4 +71,25 @@
 
 #menu-dropdown:hover > .sub-menu {
     display: flex;
+}
+
+#ready:link {
+    color: white;
+    text-decoration: none;
+}
+
+#ready:visited {
+    color: white;
+}
+
+#ready:hover {
+    color: #ddd;
+}
+
+.footer {
+    width: 100%;
+    color: white;
+    background-color: black;
+    text-align: center;
+    position: absolute;
 }

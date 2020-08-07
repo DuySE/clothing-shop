@@ -5,20 +5,35 @@
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function handler(id) {
+        function handler(id, event) {
+            event.preventDefault();
             $.ajax({
-                url: `/category/${id}`,
+                url: '/products',
+                data: { id: id },
+                type: 'post',
                 dataType: 'json',
                 success: data => {
-                    console.log(data);
                     localStorage.setItem('results', JSON.stringify(data));
-                    window.location.href = '/category';
+                    window.location.href = '/products';
                 }
             });
         }
+        $(document).ready(function () {
+            $('.banner button, #ready').on('click', function () {
+                $.ajax({
+                    url: '/products',
+                    data: { id: null },
+                    type: 'post',
+                    dataType: 'json',
+                    success: data => {
+                        localStorage.setItem('results', JSON.stringify(data));
+                        window.location.href = "/products";
+                    }
+                });
+            });
+        });
     </script>
 </head>
 
@@ -31,20 +46,21 @@
         </div>
         <div class="category">
             <div class="menu">
-                NEW ARRIVALS
+                <a href="#" onclick="handler('5f252a223422d5cd2a81e9cb', event)">NEW ARRIVALS</a>
             </div>
             <div id="menu-dropdown">
-                READY-TO-WEAR
-                <img src="img/icons/arrow.svg" alt="arrow" id="arrow">
+                <a href="#" id="ready">READY-TO-WEAR</a>
+                <img src="img/icons/arrow.svg" alt="Down arrow" id="arrow" class="arrow">
                 <div class="sub-menu">
-                    <a href="#" onclick="handler('5f252af33422d5cd2a81e9ce')">Shirts</a>
-                    <a href="#" onclick="handler('5f252a763422d5cd2a81e9cc')">T-shirts</a>
-                    <a href="#" onclick="handler('5f252afa3422d5cd2a81e9cf')">Pants</a>
-                    <a href="#" onclick="handler('5f252b0b3422d5cd2a81e9d0')">Denim</a>
+                    <a href="#" onclick="handler('5f252af33422d5cd2a81e9ce', event)">Shirts</a>
+                    <a href="#" onclick="handler('5f252a763422d5cd2a81e9cc', event)">T-shirts</a>
+                    <a href="#" onclick="handler('5f252afa3422d5cd2a81e9cf', event)">Pants</a>
+                    <a href="#" onclick="handler('5f252b0b3422d5cd2a81e9d0', event)">Denim</a>
+                    <a href="#" onclick="handler('5f2a647d6d94e108afb5d354', event)">Sneakers</a>
                 </div>
             </div>
             <div class="menu">
-                SALE
+                <a href="#" onclick="handler('5f252a963422d5cd2a81e9cd', event)">SALE</a>
             </div>
             <div class="menu">
                 <a href="/contact">CONTACT US</a>
@@ -54,10 +70,11 @@
     </div>
     <div class="banner">
         <img src="img/banner.png" alt="Banner" style="width: 100%" />
+        <button type="button" class="btn btn-secondary btn-sm">All products</button>
     </div>
     <div class="hot-sales">
-        <h1 style="text-align: center;">HOT SALES</h1>
-        <p class="slogan">Discover best-sellers of Gangster |</p>
+        <h1 style="text-align: center;">SALE</h1>
+        <p class="slogan">Discover best-sellers of Gangster</p>
         <div class="d-flex justify-content-around">
             <div class="product">
                 <img src="img/products/home-img/women-clothing.jpg" alt="Women clothing" />
@@ -79,7 +96,7 @@
     </div>
     <div class="lookbook">
         <h1 style="text-align: center;">LOOKBOOK</h1>
-        <p class="slogan">Collections |</p>
+        <p class="slogan">Collections</p>
         <div class="row">
             <div class="col product">
                 <img src="img/products/home-img/look1.jpg" alt="Look 1" />
@@ -97,28 +114,30 @@
         </div>
     </div>
     <div class="new-arrivals-section">
-        <h1>NEW ARRIVALS</h1>
-        <p class="slogan">Explore world trending |</p>
+        <h1>
+            <a href="#" onclick="handler('5f252a223422d5cd2a81e9cb', event)">NEW ARRIVALS</a>
+        </h1>
+        <p class="slogan">Explore world trending</p>
         <div class="d-flex justify-content-around">
             <div class="product">
-                <img src="img/products/home-img/medusa.jpg" alt="MEDUSA CREST EMBROIDERED T-SHIRT" />
-                <p class="name">MEDUSA CREST EMBROIDERED T-SHIRT</p>
-                <p class="price">$1426</p>
+                <img src="img/products/home-img/sleeveless-tshirt.jpg" alt="L'HOMME MOTIF T-SHIRT" />
+                <p class="name">BLONDE PRINT SLEEVELESS T-SHIRT</p>
+                <p class="price">$800</p>
             </div>
             <div class="product">
                 <img src="img/products/home-img/safari.jpg" alt="SAFARI MIDI SHIRT DRESS" />
                 <p class="name">SAFARI MIDI SHIRT DRESS</p>
-                <p class="price">$1242</p>
+                <p class="price">$7892</p>
             </div>
             <div class="product">
                 <img src="img/products/home-img/gv.jpg" alt="GV SIGNATURE SWEATER" />
                 <p class="name">GV SIGNATURE SWEATER</p>
-                <p class="price">$2321</p>
+                <p class="price">$12500</p>
             </div>
             <div class="product">
-                <img src="img/products/home-img/acanthus.jpg" alt="ACANTHUS PRINT ACCENT PANTS" />
-                <p class="name">ACANTHUS PRINT ACCENT PANTS</p>
-                <p class="price">$4123</p>
+                <img src="img/products/home-img/print-leggings.jpg" alt="ACANTHUS PRINT ACCENT PANTS" />
+                <p class="name">BAROCCO RODEO PRINT LEGGINGS</p>
+                <p class="price">$4320</p>
             </div>
         </div>
     </div>

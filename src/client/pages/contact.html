@@ -9,20 +9,23 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function handler(id) {
+        function handler(id, event) {
+            event.preventDefault();
             $.ajax({
-                url: `/category/${id}`,
+                url: `/products`,
+                data: { id: id },
+                type: 'post',
                 dataType: 'json',
                 success: data => {
                     localStorage.setItem('results', JSON.stringify(data));
-                    window.location.href = "/category";
+                    window.location.href = "/products";
                 }
             });
         }
         $(document).ready(function () {
+            $(".product-list").children().remove();
             let data = JSON.parse(localStorage.getItem('results'));
             $.each(data, (index, product) => {
-                console.log(product);
                 $product = $("<div>", { class: "product" }).append([
                     $("<img>", { src: `${product.photo}` }),
                     $("<p>", { text: `${product.name}` }),
@@ -43,31 +46,29 @@
         </div>
         <div class="category">
             <div class="menu">
-                NEW ARRIVALS
+                <a href="#" onclick="handler('5f252a223422d5cd2a81e9cb', event)">NEW ARRIVALS</a>
             </div>
             <div id="menu-dropdown">
-                READY-TO-WEAR
-                <img src="img/icons/arrow.svg" alt="arrow" id="arrow">
+                <a href="#" id="ready">READY-TO-WEAR</a>
+                <img src="img/icons/arrow.svg" alt="Down arrow" id="arrow" class="arrow">
                 <div class="sub-menu">
-                    <a href="#" onclick="handler('5f252af33422d5cd2a81e9ce')">Shirts</a>
-                    <a href="#" onclick="handler('5f252a763422d5cd2a81e9cc')">T-shirts</a>
-                    <a href="#" onclick="handler('5f252afa3422d5cd2a81e9cf')">Pants</a>
-                    <a href="#" onclick="handler('5f252b0b3422d5cd2a81e9d0')">Denim</a>
+                    <a href="#" onclick="handler('5f252af33422d5cd2a81e9ce', event)">Shirts</a>
+                    <a href="#" onclick="handler('5f252a763422d5cd2a81e9cc', event)">T-shirts</a>
+                    <a href="#" onclick="handler('5f252afa3422d5cd2a81e9cf', event)">Pants</a>
+                    <a href="#" onclick="handler('5f252b0b3422d5cd2a81e9d0', event)">Denim</a>
+                    <a href="#" onclick="handler('5f2a647d6d94e108afb5d354', event)">Sneakers</a>
                 </div>
             </div>
             <div class="menu">
-                SALE
+                <a href="#" onclick="handler('5f252a963422d5cd2a81e9cd', event)">SALE</a>
             </div>
             <div class="menu">
                 <a href="/contact">CONTACT US</a>
             </div>
         </div>
     </div>
-    <div class="banner">
-        <img src="img/banner.png" alt="Banner" style="width: 100%" />
-    </div>
     <div class="contact-section">
-        <div class="form">
+        <form class="form" onsubmit="">
             <h1>Contact Us</h1>
             <p>Leave us a message |</p>
             <div class="form-group">
@@ -83,7 +84,7 @@
                 <textarea class="form-control" rows="3"></textarea>
             </div>
             <button type="button" class="btn btn-primary">Let's get started</button>
-        </div>
+        </form>
         <div class="illustration">
             <img src="img/contact.jpg" alt="Contact Us" />
         </div>

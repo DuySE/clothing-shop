@@ -37,8 +37,33 @@ h1 {
     font-size: xx-large;
 }
 
-.footer {
-    color: white;
-    background-color: black;
-    text-align: center;
+.banner {
+    position: relative;
+}
+
+.banner button {
+    background-color: transparent;
+    outline: none;
+    position: absolute;
+    top: 92.5%;
+    left: 46%;
+}
+
+.banner button:hover {
+    background-color: transparent;
+}
+
+.banner button:active {
+    outline: none;
+    background-color: transparent;
+}
+
+h1 a:link {
+    color: black;
+    text-decoration: none;
+}
+
+h1 a:visited {
+    color: black;
+    text-decoration: none;
 }
